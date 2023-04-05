@@ -10,7 +10,7 @@ class ExpressionSerializer(serializers.Serializer):
     def validate(self, attrs):
         pattern = r'[\+\-\*\/\^\(\)]|\d*\.?\d+|[a-zA-Z]+|[!@#$%&{}=<>\?\_\'\"]'
         tokens = re.findall(pattern, attrs['expression'])
-        pattern = r"^([+\-*/^()]|\d*\.?\d+|lg|ln|sin|cos|tan|asin|acos|atan)$"
+        pattern = r"^([+\-\*/^()]|\d*\.?\d+|lg|ln|sin|cos|tan|asin|acos|atan)$"
         if attrs['variables']:
             p = "".join(f"{key}" for key in attrs['variables'])
             pattern += f"|^[{p}]$"
