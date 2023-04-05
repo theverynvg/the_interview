@@ -8,7 +8,7 @@ class ExpressionSerializer(serializers.Serializer):
     variables = serializers.DictField()
 
     def validate(self, attrs):
-        pattern = r'(\d+\.?\d*|\.\d+|[!@#$%&{}=<>?_\'\"]|[a-zA-Z]+|\+|-|\*|/|\^|\(|\))'
+        pattern = r'[\+\-\*\/\^\(\)]|\d*\.?\d+|[a-zA-Z]+|[!@#$%&{}=<>\?\_\'\"]'
         tokens = re.findall(pattern, attrs['expression'])
         pattern = r"^\d+\.?\d*$|^\.\d+$|$|^\+$|^-$|^\*$|^\/$|^\^$|^\(|\)$|^lg$|^ln$|^sin$|^cos$|^tan$|^asin$|^acos$|^atan$"
         if attrs['variables']:
