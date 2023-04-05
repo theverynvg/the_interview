@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app_calc.views import ExpressionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ExpressionView.as_view(), name='eval'),
 ]
