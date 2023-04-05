@@ -9,7 +9,7 @@ def evaluate_expression(expression: str, variables: dict) -> Union[float, str]:
         var_names = []
     try:
         expression = sympy.sympify(expression).replace(sympy.Function('lg'),
-                                                             lambda x: sympy.log(x, 10))
+                                                       lambda x: sympy.log(x, 10))
     except:
         return 'Некорректное выражение'
     try:
@@ -17,4 +17,4 @@ def evaluate_expression(expression: str, variables: dict) -> Union[float, str]:
     except:
         return 'Деление на ноль'
     result = f(*variables.values())
-    return result
+    return float(result)
