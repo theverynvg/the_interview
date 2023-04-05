@@ -8,8 +8,7 @@ def evaluate_expression(expression: str, variables: dict) -> Union[float, str]:
     else:
         var_names = []
     try:
-        expression = sympy.sympify(expression,
-                                   convert_xor=True).replace(sympy.Function('lg'),
+        expression = sympy.sympify(expression).replace(sympy.Function('lg'),
                                                              lambda x: sympy.log(x, 10))
     except:
         return 'Некорректное выражение'

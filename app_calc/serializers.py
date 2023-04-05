@@ -10,7 +10,6 @@ class ExpressionSerializer(serializers.Serializer):
     def validate(self, attrs):
         pattern = r'(\d+\.?\d*|\.\d+|[!@#$%&{}=<>?_\'\"]|[a-zA-Z]+|\+|-|\*|/|\^|\(|\))'
         tokens = re.findall(pattern, attrs['expression'])
-        print(tokens)
         pattern = r"^\d+\.?\d*$|^\.\d+$|$|^\+$|^-$|^\*$|^\/$|^\^$|^\(|\)$|^lg$|^ln$|^sin$|^cos$|^tan$|^asin$|^acos$|^atan$"
         if attrs['variables']:
             p = "".join(f"{key}" for key in attrs['variables'])
@@ -23,4 +22,5 @@ class ExpressionSerializer(serializers.Serializer):
                     raise ValidationError(f"Требуемая переменная '{token}' не определена ")
                 else:
                     raise ValidationError(f"Неподдерживаемая функция  '{token}' ")
+        attrs['expression'] = attrs['expression'].replace('^', '**')
         return attrs
