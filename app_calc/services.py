@@ -11,7 +11,6 @@ def viewname(func):
 
 
 def my_lg(x):
-    print(type(x))
     if x <= 0:
         raise ValueError
     return sympy.log(x, 10)
@@ -30,17 +29,12 @@ def my_acos(x):
 
 
 def my_atan(x):
-    print(x)
-    print(type(x))
-    print(x.is_positive)
     if x > 1:
         raise ValueError
     return sympy.atan(x)
 
 
 def my_ln(x):
-    print(type(x))
-    print(x)
     if x <= 0:
         raise ValueError
     return sympy.log(x, 2.71828)
