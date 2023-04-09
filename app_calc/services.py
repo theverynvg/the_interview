@@ -18,19 +18,19 @@ def my_lg(x):
 
 
 def my_asin(x):
-    if x>1:
+    if x > 1:
         raise ValueError
     return sympy.asin(x)
 
 
 def my_acos(x):
-    if x>1:
+    if x > 1:
         raise ValueError
     return sympy.acos(x)
 
 
 def my_atan(x):
-    if x>1:
+    if x > 1:
         raise ValueError
     return sympy.atan(x)
 
@@ -48,14 +48,13 @@ def evaluate_expression(expression: str, variables: dict) -> Union[float, str]:
     else:
         var_names = []
     try:
-        expression = sympy.sympify(expression).replace(sympy.Function('lg'),
-                                                       lambda x: my_lg(x))
-        expression = sympy.sympify(expression).replace(sympy.asin,
-                                                       lambda x: my_asin(x))
-        expression = sympy.sympify(expression).replace(sympy.acos,
-                                                       lambda x: my_acos(x))
-        expression = sympy.sympify(expression).replace(sympy.atan,
-                                                       lambda x: my_atan(x))
+        d_func = {sympy.Function('lg'): lambda x: my_lg(x),
+                  sympy.asin: lambda x: my_asin(x),
+                  sympy.acos: lambda x: my_acos(x),
+                  sympy.atan: lambda x: my_atan(x),
+                  }
+        for f in d_func:
+            expression = sympy.sympify(expression).replace(f, d_func[f])
     except:
         return 'Некорректное выражение'
     try:
