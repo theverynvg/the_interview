@@ -116,7 +116,7 @@ class CalculationTest(TestCase):
         response = self.client.post('', data, format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
-                                         "error": "Некорректное выражение"})
+                                         "error": "В asin,acos,atan могут быть переданы значения от -1 до 1"})
 
     def test_acos(self):
         data = {
@@ -126,7 +126,7 @@ class CalculationTest(TestCase):
         response = self.client.post('', data, format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
-                                         "error": "Некорректное выражение"})
+                                         "error": "В asin,acos,atan могут быть переданы значения от -1 до 1"})
 
     def test_atan(self):
         data = {
@@ -136,7 +136,7 @@ class CalculationTest(TestCase):
         response = self.client.post('', data, format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
-                                         "error": "Некорректное выражение"})
+                                         "error": "В asin,acos,atan могут быть переданы значения от -1 до 1"})
 
     def test_lg_negative(self):
         data = {
@@ -146,7 +146,7 @@ class CalculationTest(TestCase):
         response = self.client.post('', data, format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
-                                         "error": "Некорректное выражение"})
+                                         "error": "Отрицательное число под логарифмом"})
 
     def test_ln_negative(self):
         data = {
@@ -156,4 +156,4 @@ class CalculationTest(TestCase):
         response = self.client.post('', data, format='json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
-                                         "error": "Некорректное выражение"})
+                                         "error": "Отрицательное число под логарифмом"})
