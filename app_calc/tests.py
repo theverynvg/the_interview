@@ -107,3 +107,53 @@ class CalculationTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'result': None,
                                          "error": "Некорректное выражение"})
+
+    def test_asin(self):
+        data = {
+            "expression": "asin(2)",
+            "variables": {}
+        }
+        response = self.client.post('', data, format='json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'result': None,
+                                         "error": "Некорректное выражение"})
+
+    def test_acos(self):
+        data = {
+            "expression": "acos(2)",
+            "variables": {}
+        }
+        response = self.client.post('', data, format='json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'result': None,
+                                         "error": "Некорректное выражение"})
+
+    def test_atan(self):
+        data = {
+            "expression": "atan(2)",
+            "variables": {}
+        }
+        response = self.client.post('', data, format='json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'result': None,
+                                         "error": "Некорректное выражение"})
+
+    def test_lg_negative(self):
+        data = {
+            "expression": "lg(-5)",
+            "variables": {}
+        }
+        response = self.client.post('', data, format='json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'result': None,
+                                         "error": "Некорректное выражение"})
+
+    def test_ln_negative(self):
+        data = {
+            "expression": "ln(-5)",
+            "variables": {}
+        }
+        response = self.client.post('', data, format='json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'result': None,
+                                         "error": "Некорректное выражение"})
